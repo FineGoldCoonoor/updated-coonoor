@@ -1,3 +1,4 @@
+
 const videoElement = document.getElementById('webcam');
 const canvasElement = document.getElementById('overlay');
 const canvasCtx = canvasElement.getContext('2d');
@@ -48,7 +49,20 @@ function selectJewelryType(type) {
   document.getElementById('jewelry-options').style.display = 'flex';
 
   let start = 1, end = 15;
-  if (type.includes('necklace')) end = 24;
+
+  // Custom image counts
+  switch (type) {
+    case 'gold_earrings':
+      end = 15; break;         // Show 10 gold earrings
+    case 'gold_necklaces':
+      end = 16; break;          // Show 8 gold necklaces
+    case 'diamond_earrings':
+      end = 0; break;         // Show 12 diamond earrings
+    case 'diamond_necklaces':
+      end = 7; break;          // Show 6 diamond necklaces
+    default:
+      end = 15;
+  }
 
   insertJewelryOptions(type, 'jewelry-options', start, end);
 }
