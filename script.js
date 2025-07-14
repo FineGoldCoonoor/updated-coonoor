@@ -48,20 +48,20 @@ function selectJewelryType(type) {
   currentType = type;
   document.getElementById('jewelry-options').style.display = 'flex';
 
+  // 🔁 Clear previously loaded images when switching category
+  earringImg = null;
+  necklaceImg = null;
+  earringSrc = '';
+  necklaceSrc = '';
+
   let start = 1, end = 15;
 
-  // Custom image counts
   switch (type) {
-    case 'gold_earrings':
-      end = 15; break;         // Show 10 gold earrings
-    case 'gold_necklaces':
-      end = 16; break;          // Show 8 gold necklaces
-    case 'diamond_earrings':
-      end = 0; break;         // Show 12 diamond earrings
-    case 'diamond_necklaces':
-      end = 7; break;          // Show 6 diamond necklaces
-    default:
-      end = 15;
+    case 'gold_earrings':     end = 30; break;
+    case 'gold_necklaces':    end = 24; break;
+    case 'diamond_earrings':  end = 20; break;
+    case 'diamond_necklaces': end = 18; break;
+    default:                  end = 15;
   }
 
   insertJewelryOptions(type, 'jewelry-options', start, end);
